@@ -2,8 +2,62 @@
 
 <head>
 
+    <style>
+        body {
+            background-color: lightblue;
+            margin: 0;
+            padding: 0;
+        }
+
+        .map {
+            background-color: green;
+            height: 500px;
+            width: 100%;
+
+        }
+        #player1 {
+            top: 100;
+            left: 100;
+            position: absolute;
+            background-color: red;
+            height: 10px;
+            width: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            const el = document.getElementById('player1');
+            const step = 10; // Change in pixels for each key press
+            let left = el.offsetLeft;
+            let top = el.offsetTop;
+
+            switch(event.key) {
+                case 'ArrowLeft':
+                    left -= step;
+                    break;
+                case 'ArrowRight':
+                    left += step;
+                    break;
+                case 'ArrowUp':
+                    top -= step;
+                    break;
+                case 'ArrowDown':
+                    top += step;
+                    break;
+                default:
+                    return; // Exit if it's not an arrow key
+            }
+
+            el.style.left = left + 'px';
+            el.style.top = top + 'px';
+        });
+    </script>
 </head>
 <body>
     <h1>Hi Jude!</h1>
+    <div class="map">
+        <span id="player1">&nbsp;</span>
+        &nbsp;
+    </div>
 </body>
 </html>
